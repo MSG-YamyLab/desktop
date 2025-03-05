@@ -46,7 +46,7 @@ export const Login = () => {
           <div className="w-full h-full flex   justify-center items-center ">
             <div className="pl-2 pr-2 w-10/12 h-full ">
               <div className="h-1/6  font-black text-4xl text-wrap text-center flex flex-wrap justify-center items-center">
-                 
+              STAY CLOSE, NO MATTER THE DISTANCE
               </div>
 
               <div className="flex flex-col  gap-4 h-3/6 justify-center">

@@ -3,6 +3,7 @@ import { lazy } from "react";
 import ProtectedRoute from "./ProtectedRoute";
 
 import { Login } from "./pages/auth/Login";
+import { Registration } from "./pages/auth/Registration";
 // import { Registration } from "./pages/auth/Registration";
 
 const MainLayouts = lazy(() => import("./layouts/MainLayouts").then((m) => ({ default: m.MainLayouts })));
@@ -30,8 +31,8 @@ export const router = createHashRouter([
     path: "/login",
     element: <Login />,
   },
-  // {
-  //   path: "/register",
-  //   element: <Registration />,
-  // },
+  {
+    path: "/register",
+    element: <Registration />,
+  },
 ]);

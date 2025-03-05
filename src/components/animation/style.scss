@@ -1,0 +1,31 @@
+.wave-container {
+    display: flex;
+  
+}
+
+.ball {
+   
+   background: linear-gradient( #108DA6, #47A4ED);
+    animation: wave 1.5s infinite ease-in-out;
+}
+
+.ball:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.ball:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ball:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}

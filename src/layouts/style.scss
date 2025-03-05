@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.gradient{
+  background: linear-gradient(#236EC6, #1371E0);
+}
+
+span{
+  background-image: linear-gradient(#4EA79C, #50C2E7);
+  color: transparent;
+  background-clip: text;
+}
+
+p{
+  background-image: linear-gradient(#236EC6, #1371E0);
+  color: transparent;
+  background-clip: text;
+}
+
+
+/* Для всіх скролбарів у проекті */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Колір фону (Tailwind gray-100) */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Колір тумблера (Tailwind gray-700) */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3748; /* Темніший при наведенні (Tailwind gray-800) */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.scrollbar-visible::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}

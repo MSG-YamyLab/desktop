@@ -11,6 +11,7 @@ import { authActions } from "../redux/slice/authSlice";
 import { Image } from "../components/profile/Image";
 import { Outlet } from "react-router-dom";
 import { IChat, ITyped } from "../interface/chat/chat";
+import { IUser } from "../interface/auth/auth";
 
 
 
@@ -24,7 +25,7 @@ const [contact, setContact] = useState<boolean>(false);
 const [image, setImage] = useState<boolean>(false)
 const [IsTyping, setIsTyping] = useState<ITyped>()
 const [chats, setChat] = useState<IChat[]>();
-
+const [users, setUsers] = useState<IUser[]>()
 
 const accessToken = localStorage.getItem("access");
 
@@ -67,7 +68,7 @@ return (
     <SideBar setSettings={setSettings} setContact={setContact}/>  
       <Panel /> 
      
-     <Outlet   />
+     <Outlet   context={{users}}/>
     
 
       {settings && <Settings setSettings = {setSettings} setProfile={setProfile} />} 

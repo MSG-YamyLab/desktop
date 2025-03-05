@@ -8,7 +8,7 @@ import { useAppSelector } from "../../hooks/reduxHooks"
 import TrashSvg from "../../assets/svg/icon/trash.svg"
 import { authActions } from "../../redux/slice/authSlice"
 import { authService } from "../../service/authService"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { IUser } from "../../interface/auth/auth"
 
@@ -20,7 +20,10 @@ export const Header: React.FC<IProps> = ({ chat }) => {
     const user = useAppSelector(state => state.auth)
     const navigate = useNavigate()
     const accessToken = localStorage.getItem("access");
-    const [users, setUsers] = useState<IUser[]>()
+    const { users } = useOutletContext<{ 
+      users: IUser[] ; 
+    }>();
+  
     const getPartnerUser = () => {
 
         const user_partner_id = chat?.users?.find(x => x.id !== user.id)?.id
@@ -29,37 +32,14 @@ export const Header: React.FC<IProps> = ({ chat }) => {
             throw new Error('Partner user not found')
         }
         const partner = users?.find(x=>x.id === user_partner_id)
+        if (!partner){
+          return chat?.users?.find(x => x.id !== user.id)
+        }
         return partner
     }
 
       
-  useEffect(() => {
-    let socket: WebSocket;
-    let reconnectInterval: any;
-    
-    const connectWebSocket = () => {
-      socket = new WebSocket(
-        `ws://192.168.1.5:8000/ws/users/test?token=${accessToken}`
-      );
 
-      socket.onopen = () => {
-        clearInterval(reconnectInterval);
-      };
-
-      socket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        setUsers(data?.contacts);
-      };
-      socket.onclose = () => {
-        reconnectInterval = setTimeout(connectWebSocket, 3000);
-      };
-    };
-
-    connectWebSocket();
-    return () => {
-      if (socket) socket.close();
-    };
-  }, [accessToken]);
     const partnerUser = getPartnerUser()
     const deleteChat = async (id:number) => {
         const res = await authService.deleteChatById(id)
